@@ -3,67 +3,73 @@ package pro.sky.java.cource2.skyprospringhw4_1;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CalculatorImpl implements CalculatorService{
+public class CalculatorServiceImpl implements CalculatorService {
 
-    private boolean isNotValue(String a, String b){
-        return ( a.equals("") || b.equals(""));
-    }
-
-    @Override
-    public String toCalc() {
-        return "Добро пожаловать в калькулятор!";
+    private boolean isNotValue(String a, String b) {
+        return (a.isEmpty() || b.isEmpty());
     }
 
     @Override
     public String plus(String a, String b) {
-        if ( isNotValue(a, b) ) {
+        if (isNotValue(a, b)) {
             return " Недостаточно параметров для вычисления ! ";
         }
         Integer i1 = Integer.valueOf(a);
         Integer i2 = Integer.valueOf(b);
-        return i1 + " + " + i2 + " = " + (i1 + i2);
+        return "" + (i1 + i2);
     }
 
     @Override
     public String minus(String a, String b) {
-        if ( isNotValue(a, b) ) {
+        if (isNotValue(a, b)) {
             return " Недостаточно параметров для вычисления ! ";
         }
         Integer i1 = Integer.valueOf(a);
         Integer i2 = Integer.valueOf(b);
-        return i1 + " - " + i2 + " = " + (i1 - i2);
+        return "" + (i1 - i2);
     }
 
     @Override
     public String multiply(String a, String b) {
-        if ( isNotValue(a, b) ) {
+        if (isNotValue(a, b)) {
             return " Недостаточно параметров для вычисления ! ";
         }
         Integer i1 = Integer.valueOf(a);
         Integer i2 = Integer.valueOf(b);
-        return i1 + " * " + i2 + " = " + (i1 * i2);
+        return "" + (i1 * i2);
     }
 
     @Override
     public String divide(String a, String b) {
-        int d = 0;
-        String s;
-        String result;
-
-        if ( isNotValue(a, b) ) {
+//        int d = 0;
+//        String s;
+//        String result;
+/*
+        if (isNotValue(a, b)) {
             return " Недостаточно параметров для вычисления ! ";
         }
-        Integer i1 = Integer.valueOf(a);
-        Integer i2 = Integer.valueOf(b);
+*/
 
+        int i1 = Integer.valueOf(a);
+        int i2 = Integer.valueOf(b);
+
+        if (i2 == 0) {
+            throw new MyIllegalArgumentException("Деление на ноль!!!");
+        }
+
+        return "" + i1 / i2;
+
+/*
         try {
             d = i1 / i2;
         } catch (ArithmeticException e) {
             s = "Деление на ноль !";
-            return i1 + " / " + i2 + " = " + s;
+            result = "" + s;
+            return result;
         } finally {
-            result = i1 + " / " + i2 + " = " + d;
+            result = "" + d;
         }
         return result;
+*/
     }
 }

@@ -15,29 +15,33 @@ public class Calculator {
     }
 
     @GetMapping
-    public String privet(){
-        return calculatorService.toCalc();
+    public String privet() {
+        return "Добро пожаловать в калькулятор!";
     }
 
 
     @GetMapping("/plus")
-    public String summa(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b){
-        return calculatorService.plus(a, b);
+    public String summa(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b) {
+        String result =  calculatorService.plus(a, b);
+        return a + " + " + b + " = " + result;
     }
 
     @GetMapping("/minus")
-    public String raznost(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b){
-        return calculatorService.minus(a, b);
+    public String raznost(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b) {
+        String result = calculatorService.minus(a, b);
+        return a + " - " + b + " = " + result;
     }
 
     @GetMapping("/multiply")
-    public String umnozit(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b){
-        return calculatorService.multiply(a, b);
+    public String umnozit(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b) {
+        String result = calculatorService.multiply(a, b);
+        return a + " * " + b + " = " + result;
     }
 
     @GetMapping("/divide")
-    public String delit(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b){
-        return calculatorService.divide(a, b);
+    public String delit(@RequestParam(value = "num1") String a, @RequestParam(value = "num2") String b) {
+        String result = calculatorService.divide(a, b);
+        return a + " / " + b + " = " + result;
     }
 
 
